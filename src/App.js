@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Paper, ThemeProvider } from '@mui/material';
+import theme from './theme';
+import AuthContextProvider from './context/AuthContext';
+import Checker from './components/Checker';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthContextProvider>
+      <ThemeProvider theme={theme}>
+        <Checker>
+          <Paper style={{ minHeight: '100vh' }} />
+        </Checker>
+      </ThemeProvider>
+    </AuthContextProvider>
   );
-}
+};
 
 export default App;
+
+// npx json-server --watch src/data/db.json --port 8000
